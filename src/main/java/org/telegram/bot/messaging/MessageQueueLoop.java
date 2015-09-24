@@ -32,7 +32,7 @@ public final class MessageQueueLoop implements Runnable {
             Message message = null;
             try {
                 while (!Thread.currentThread().isInterrupted() && looping.get()) {
-                    message = strategy.pollMessage(messageQueue);
+                    message = strategy.next(messageQueue);
                     if (message != null) {
                         if (message == STOP_MESSAGE) {
                             if (looping.get()) {

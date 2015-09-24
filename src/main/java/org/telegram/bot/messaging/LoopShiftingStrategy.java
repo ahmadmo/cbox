@@ -29,7 +29,7 @@ public final class LoopShiftingStrategy implements MessageQueueLoopStrategy {
     }
 
     @Override
-    public Message pollMessage(MessageQueue queue) {
+    public Message next(MessageQueue queue) {
         Message message = queue.poll(timeout);
         if (message == null && poke.compareAndSet(true, false)) {
             message = queue.poll(timeout);
@@ -44,7 +44,7 @@ public final class LoopShiftingStrategy implements MessageQueueLoopStrategy {
 
     @Override
     public boolean stopIfEmpty() {
-        return poke.compareAndSet(true, false);
+        return !poke.getAndSet(false);
     }
 
 }

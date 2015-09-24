@@ -54,6 +54,12 @@ public class FieldUpdater<V> {
         return compareAndSet0(expect, update);
     }
 
+    public V getAndSet(V value) {
+        V v = get();
+        set(value);
+        return v;
+    }
+
     public void setUpdateInterval(TimeProperty interval) {
         updateInterval.set(interval.to(TimeUnit.MILLISECONDS));
     }

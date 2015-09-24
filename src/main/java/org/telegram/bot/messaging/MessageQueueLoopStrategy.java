@@ -5,7 +5,7 @@ package org.telegram.bot.messaging;
  */
 public interface MessageQueueLoopStrategy {
 
-    Message pollMessage(MessageQueue queue);
+    Message next(MessageQueue queue);
 
     void poke();
 
