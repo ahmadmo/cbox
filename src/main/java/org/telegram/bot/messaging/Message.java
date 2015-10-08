@@ -25,6 +25,7 @@ public final class Message extends HashMap<String, Object> {
     private static final ObjectReader READER = MAPPER.reader(Message.class);
 
     public Message() {
+        super();
     }
 
     public Message(Map<String, Object> map) {
